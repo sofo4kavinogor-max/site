@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+
+    <div class="hero-text">
+        <h1 class="hero-title">
+            ТВОЕ ТЕЛО —<br>
+            <span class="hero-accent">ГЛАВНОЕ</span><br>
+            ДОСТИЖЕНИЕ ⚡
+        </h1>
+
+        <p class="hero-desc">
+            Привет, спортик! Хватит гадать на кофейной гуще и доверять унылым диетам из пабликов. Настало время жесткой дисциплины, прогресса и точного математического расчета твоего рациона.
+        </p>
+
+        <a href="{{ url_for('calc') }}" class="btn">Создать форму</a>
+    </div>
+
+    <div class="hero-img">
+        <div class="hero-img-box">
+            <img src="{{ url_for('static', filename='maxsport.jpg') }}" alt="Trainer">
+        </div>
+    </div>
+
+</div>
+{% endblock %}

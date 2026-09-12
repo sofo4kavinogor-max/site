@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/calc.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="calc-page">
+
+    <h1 class="calc-title">КАЛЬКУЛЯТОР <span>КАЛОРИЙ</span></h1>
+    <p class="calc-desc">Заполни данные — получишь норму калорий и БЖУ.</p>
+
+    {% if error %}
+    <div class="error-box">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    {% if result %}
+    <div class="card result-card">
+        <h3 class="result-title">{{ name }}, твой результат</h3>
+
+        <div class="result-box">
+            <div class="result-label">Норма калорий</div>
+            <div class="result-value">{{ result.calories }}</div>
+            <div class="result-unit">ккал в день</div>
+        </div>
+
+        <div class="macros">
+            <div class="macro">
+                <div class="macro-label">Белки</div>
+                <div class="macro-value">{{ result.protein }} г</div>
+            </div>
+            <div class="macro">
+                <div class="macro-label">Жиры</div>
+                <div class="macro-value">{{ result.fat }} г</div>
+            </div>
+            <div class="macro">
+                <div class="macro-label">Углеводы</div>
+                <div class="macro-value">{{ result.carbs }} г</div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {# Форма #}
+    <div class="card">
+        <form method="POST" action="/calc" class="calc-form">
+            <input class="field" type="text" name="name" placeholder="Имя" required>
+            <input class="field" type="number" name="age" placeholder="Возраст" required>
+            <input class="field" type="number" name="weight" placeholder="Вес (кг)" required>
+            <input class="field" type="number" name="height" placeholder="Рост (см)" required>
+
+            <select class="field" name="gender">
+                <option value="male">Мужчина</option>
+                <option value="female">Женщина</option>
+            </select>
+
+            <select class="field" name="goal">
+                <option value="lose">Похудеть</option>
+                <option value="keep">Держать форму</option>
+                <option value="gain">Набрать массу</option>
+            </select>
+
+            <button class="btn" type="submit">Рассчитать</button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

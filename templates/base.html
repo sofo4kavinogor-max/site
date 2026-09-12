@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOOKSMAXING</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+
+<header class="header">
+    <a href="{{ url_for('index') }}" class="logo">LOOKS<span>MAXING</span></a>
+
+    <div class="menu">
+        <a href="{{ url_for('index') }}">Главная</a>
+        <a href="{{ url_for('calc') }}">Калькулятор</a>
+
+        <div class="theme-btn" id="themeBtn">
+            <span class="icon" id="themeIcon">🌙</span>
+            <span class="text" id="themeText">Тёмная</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<script>
+    var body = document.body;
+    var btn = document.getElementById('themeBtn');
+    var icon = document.getElementById('themeIcon');
+    var text = document.getElementById('themeText');
+
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light');
+        icon.textContent = '☀️';
+        text.textContent = 'Светлая';
+    }
+
+    btn.addEventListener('click', function() {
+        body.classList.toggle('light');
+        if (body.classList.contains('light')) {
+            icon.textContent = '☀️';
+            text.textContent = 'Светлая';
+            localStorage.setItem('theme', 'light');
+        } else {
+            icon.textContent = '🌙';
+            text.textContent = 'Тёмная';
+            localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+
+</body>
+</html>

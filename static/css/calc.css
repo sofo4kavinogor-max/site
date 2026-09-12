@@ -1,0 +1,43 @@
+.calc-page {
+    max-width: 700px;
+    margin: 60px auto;
+}
+
+.calc-title {
+    font-size: 52px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.calc-title span {
+    color: var(--accent);
+}
+
+.calc-desc {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.calc-form button {
+    padding: 16px;
+    font-size: 16px;
+}
+
+.result-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-card {
+    margin-bottom: 30px;
+}
