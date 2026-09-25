@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<h2>Нумерология совместимости 🔢</h2>
+<h2>Нумерология совместимости</h2>
 <p>Введите даты рождения двух людей, чтобы рассчитать их числа жизненного пути и энергию союза.</p>
 
 <form method="POST" class="numerology-form">
@@ -23,13 +23,27 @@
 </form>
 
 {% if result %}
-    <div class="numerology-result">
-        <h3>Результат расчёта</h3>
-        <p><strong>Число Жизненного Пути первого:</strong> {{ result.lp1 }}</p>
-        <p><strong>Число Жизненного Пути второго:</strong> {{ result.lp2 }}</p>
-        <hr style="border-color: #41014e; margin: 15px 0;">
-        <h4>Число Союза: {{ result.union }}</h4>
-        <p class="love-text">{{ result.text }}</p>
+    <div class="result-box">
+        <h3 class="result-title">Результат расчёта</h3>
+
+        <div class="numbers-row">
+            <div class="number-card">
+                <span class="number-label">Жизненный путь 1</span>
+                <span class="number-value">{{ result.lp1 }}</span>
+            </div>
+            <div class="number-card">
+                <span class="number-label">Жизненный путь 2</span>
+                <span class="number-value">{{ result.lp2 }}</span>
+            </div>
+        </div>
+
+        <div class="result-divider"></div>
+
+        <div class="union-card">
+            <span class="union-label">Число Союза</span>
+            <span class="union-value">{{ result.union }}</span>
+            <p class="union-text">{{ result.text }}</p>
+        </div>
     </div>
 {% endif %}
 

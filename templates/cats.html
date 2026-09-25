@@ -1,9 +1,42 @@
 {% extends "base.html" %}
 
-{%block title%}
-Картинки с котиками
-{% endblock %}
+{% block title %}Мои котики{% endblock %}
 
 {% block content %}
-<p>Здесь скоро появятся картинки с котиками</p>
+    <h2>Мои любимые котики</h2>
+    <p>Здесь живут самые пушистые и милые создания на свете.</p>
+
+    <div class="cats-list">
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/cat1.jpg') }}" alt="Котик 1">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/cat2.jpg') }}" alt="Котик 2">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/cat3.jpg') }}" alt="Котик 3">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/cat4.jpg') }}" alt="Котик 4">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/cat5.jpg') }}" alt="Котик 5">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/perfect.webp') }}" alt="Котик 6">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/good.jpg') }}" alt="Котик 7">
+        </div>
+
+        <div class="cat-card">
+            <img src="{{ url_for('static', filename='images/bad.jpg') }}" alt="Котик 8">
+        </div>
+    </div>
 {% endblock %}

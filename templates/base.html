@@ -3,56 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Flask Project{% endblock %}</title>
-
-    <style>
-        body {
-            font-family: serif, sans-serif;
-            margin: 0;
-            background-color: #d9abd0;
-        }
-        header {
-            background-color: #41014e;
-            color: #d9abd0;
-            padding: 20px;
-        }
-        nav { margin-top: 10px; }
-        nav a {
-            color: #d9abd0;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        nav a:hover { text-decoration: underline; }
-        main {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 30px;
-            background-color: #d9abd0;
-        }
-        footer {
-            max-width: 900px;
-            margin: 20px auto;
-            color: #41014e;
-        }
-    </style>
+    <title>{% block title %}Мой Flask-проект{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <div class="title-plate">
+        <h1>Пикми-сайт</h1>
+    </div>
 
-<header>
-    <h1>Мой Flask-проект</h1>
-    <nav>
-        <a href="{{ url_for('index') }}">Главная</a>
-        <a href="{{ url_for('about') }}">О проекте</a>
-        <a href="{{ url_for('changelog') }}">Лог изменений</a>
-        <a href="{{ url_for('hobbys') }}">Увлечения</a>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <a href="{{ url_for('index') }}">Главная</a>
+            <a href="{{ url_for('about') }}">О проекте</a>
+            <a href="{{ url_for('hobbys') }}">Увлечения</a>
+            <a href="{{ url_for('tests') }}">Тест</a>
+            <a href="{{ url_for('numerology') }}">Нумерология</a>
+            <a href="{{ url_for('cats') }}">Котики</a>
+        </nav>
+    </header>
 
-<main>
-    {% block content %}
-    {% endblock %}
-</main>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
-<footer>Flask Project</footer>
+    <footer>
+        <p>Flask Project © 2026</p>
+    </footer>
 </body>
 </html>

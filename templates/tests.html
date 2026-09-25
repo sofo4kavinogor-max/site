@@ -11,38 +11,38 @@
     <form method="POST" class="test-form">
         <div class="question">
             <p>1. Тебе нравятся мои пикми-страницы?</p>
-            <label><input type="radio" name="q1" value="yes" required> Да, очень нравятся</label><br>
+            <label><input type="radio" name="q1" value="yes" required> Да, очень нравятся</label>
             <label><input type="radio" name="q1" value="no"> Нет, это полная чушь</label>
         </div>
         
         <div class="question">
             <p>2. Нравится ли тебе розовый цвет?</p>
-            <label><input type="radio" name="q2" value="yes" required> Да, обожаю розовый!</label><br>
+            <label><input type="radio" name="q2" value="yes" required> Да, обожаю розовый!</label>
             <label><input type="radio" name="q2" value="no"> Нет, его любят только наивные тупицы</label>
         </div>
     
         
          <div class="question">
             <p>3. Ты часто пьешь кофе?</p>
-            <label><input type="radio" name="q3" value="yes" required> Да, я очень люблю бодрящий кофе в любое время суток</label><br>
+            <label><input type="radio" name="q3" value="yes" required> Да, я очень люблю бодрящий кофе в любое время суток</label>
             <label><input type="radio" name="q3" value="no"> Нет, предпочитаю воду или чай</label>
         </div>
 
          <div class="question">
             <p>4. Твоим любимым персонажем из Винкс была Блум?</p>
-            <label><input type="radio" name="q4" value="yes" required> Да</label><br>
+            <label><input type="radio" name="q4" value="yes" required> Да</label>
             <label><input type="radio" name="q4" value="no"> Нет, Флора намного лучше</label>
         </div>
 
          <div class="question">
             <p>5. Ты стараешься тихо смеяться на парах?</p>
-            <label><input type="radio" name="q5" value="yes" required> Да, это же вежливость</label><br>
+            <label><input type="radio" name="q5" value="yes" required> Да, это же вежливость</label>
             <label><input type="radio" name="q5" value="no"> Нет, я не должен(-а) сдерживать свои душевные порывы</label>
         </div>
 
          <div class="question">
             <p>6. Есть кто-то в этой группе (М30-236БВ-25), кто тебе нравится?</p>
-            <label><input type="radio" name="q6" value="yes" required> Да</label><br>
+            <label><input type="radio" name="q6" value="yes" required> Да</label>
             <label><input type="radio" name="q6" value="no"> Нет</label>
         </div>
         
@@ -53,12 +53,15 @@
         <h3>Твой результат: {{ score }} из {{ total }}</h3>
         {% if score == total %}
             <p>Вау! Ты идеальная пикми-гёрл! 💖</p>
+            <img class="result-cat" src="{{ url_for('static', filename='images/perfect.webp') }}" alt="Котик">
         {% elif score >= total/2 %}
             <p>Неплохо! Ты на верном пути. Я знаю, что быть начинающей пикми нелегко,</p>
             <p>но у тебя все точно получится!</p>
+            <img class="result-cat" src="{{ url_for('static', filename='images/good.jpg') }}" alt="Котик">
 
         {% else %}
             <p>Ой, кажется, ты совсем не пикми :(, но это легко исправить!</p>
+            <img class="result-cat" src="{{ url_for('static', filename='images/bad.jpg') }}" alt="Котик">
         {% endif %}
         <br>
         <a href="/tests" class="btn">Пройти еще раз</a>
