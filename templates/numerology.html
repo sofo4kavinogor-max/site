@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Нумерология
+{% endblock %}
+
+{% block content %}
+<h2>Нумерология совместимости 🔢</h2>
+<p>Введите даты рождения двух людей, чтобы рассчитать их числа жизненного пути и энергию союза.</p>
+
+<form method="POST" class="numerology-form">
+    <div class="form-group">
+        <label>Дата рождения первого человека:</label>
+        <input type="date" name="date1" value="{{ request.form.get('date1', '') }}" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Дата рождения второго человека:</label>
+        <input type="date" name="date2" value="{{ request.form.get('date2', '') }}" required>
+    </div>
+    
+    <button type="submit">Рассчитать совместимость</button>
+</form>
+
+{% if result %}
+    <div class="numerology-result">
+        <h3>Результат расчёта</h3>
+        <p><strong>Число Жизненного Пути первого:</strong> {{ result.lp1 }}</p>
+        <p><strong>Число Жизненного Пути второго:</strong> {{ result.lp2 }}</p>
+        <hr style="border-color: #41014e; margin: 15px 0;">
+        <h4>Число Союза: {{ result.union }}</h4>
+        <p class="love-text">{{ result.text }}</p>
+    </div>
+{% endif %}
+
+{% endblock %}

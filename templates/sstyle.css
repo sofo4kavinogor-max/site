@@ -6,8 +6,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #222;
-    background: #f4f6f8;
+    color: #41014e;
+    background: #e395d4;
 }
 
 .container {
@@ -16,8 +16,8 @@ body {
 }
 
 .site-header {
-    background: #17324d;
-    color: white;
+    background: #41014e;
+    color: #e395d4;
     padding: 20px 0;
 }
 
@@ -39,7 +39,7 @@ body {
 }
 
 .menu a {
-    color: white;
+    color: #e395d4;
     text-decoration: none;
 }
 
@@ -60,14 +60,14 @@ body {
 .card {
     flex: 1;
     padding: 24px;
-    background: white;
+    background: #e395d4;
     border: 1px solid #ddd;
     border-radius: 12px;
 }
 
 .site-footer {
     padding: 24px 0;
-    background: #e8edf2;
+    background: #e395d4;
     margin-top: 40px;
 }
 
@@ -78,4 +78,170 @@ body {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+.comment-form {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+}
+
+
+.comment-form .form-group {
+    margin-bottom: 15px; 
+}
+
+/* Сами поля ввода */
+.comment-form input, 
+.comment-form textarea {
+    display: block; 
+    width: 100%;    
+    padding: 10px;
+    border: 1px solid #41014e;
+    border-radius: 5px;
+    font-family: inherit;
+    box-sizing: border-box; 
+}
+
+.comment-form button {
+    background-color: #41014e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.comment-form button:hover {
+    background-color: #5c1a6b;
+}
+
+/* Стили для теста */
+.test-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-weight: bold;
+    color: #41014e;
+}
+
+.question label {
+    display: block;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.test-form button, .btn {
+    background-color: #41014e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.test-form button:hover, .btn:hover {
+    background-color: #5c1a6b;
+}
+
+.result {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+}
+.img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.numerology-form {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.numerology-form .form-group {
+    margin-bottom: 15px;
+}
+
+.numerology-form label {
+    display: block;
+    font-weight: bold;
+    color: #41014e;
+    margin-bottom: 5px;
+}
+
+.numerology-form input[type="date"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #41014e;
+    border-radius: 5px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.numerology-form button {
+    background-color: #41014e;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.numerology-form button:hover {
+    background-color: #5c1a6b;
+}
+
+.numerology-result {
+    text-align: center;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.numerology-result h3 {
+    color: #41014e;
+    margin-top: 0;
+}
+
+.numerology-result h4 {
+    color: #41014e;
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.love-text {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-top: 15px;
+}
+.cats-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }

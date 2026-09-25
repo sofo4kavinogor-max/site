@@ -5,8 +5,57 @@
 {% endblock %}
 
 {% block content %}
+<h2>В чем суть?</h2>
+<p>Привет! Меня зовут Софа и у меня нет идей, о чем создать сайт. Поэтому я решила рассказать о каких-то своих</p>
+<p>приколах на пикми-страницах. Надеюсь, будет приятно потыкаться 💕</p>
+
 <h2>О проекте</h2>
 <p>Данный проект создан с использованием языка программирования Python и веб-фреймворка Flask.</p>
 <p>Цель проекта заключается в изучении базовых принципов создания веб-приложений.</p>
 <p>В приложении реализовано несколько независимых маршрутов и используется система HTML-шаблонов Jinja.</p>
+
+<h2>Отзывы</h2>
+<p>Здесь можно оставить приятный (или не очень) отзыв:</p>
+
+{% if error %}
+    <p style="color: red; font-weight: bold;">{{ error }}</p>
+{% endif %}
+
+<div class="comment-form">
+    <h3>Оставить отзыв</h3>
+    <form method="POST" action="">
+        <div class="form-group">
+            <input type="text" name="author" placeholder="Ваше имя" required>
+        </div>
+        <div class="form-group">
+            <textarea name="text" placeholder="Ваш отзыв..." rows="4" required></textarea>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+
+<div class="comments-list">
+    {% if author_filter %}
+        <p>Показаны отзывы от: <strong>{{ author_filter }}</strong> 
+           <a href="{{ url_for('about') }}" style="color: #41014e;">(показать все)</a>
+        </p>
+    {% endif %}
+
+    {% if comments %}
+        {% for comment in comments %}
+            <div class="comment">
+                <strong>
+                    <a href="{{ url_for('about', author=comment.author) }}" style="color: #41014e; text-decoration: none;">
+                        {{ comment.author }}
+                    </a>
+                </strong> 
+                <span class="date">{{ comment.date_posted.strftime('%d.%m.%Y %H:%M') }}</span>
+                <p>{{ comment.text }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Пока нет отзывов. Будьте первым!</p>
+    {% endif %}
+</div>
+
 {% endblock %}
