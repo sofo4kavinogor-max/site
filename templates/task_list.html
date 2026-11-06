@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block title %}Задачи{% endblock %}
+{% block page_title %}Список задач{% endblock %}
+
+{% block content %}
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Поиск..." id="searchInput">
+    </div>
+    <div class="col-md-4">
+        <select class="form-select" id="filterStatus">
+            <option value="">Все статусы</option>
+            <option value="todo">К выполнению</option>
+            <option value="in_progress">В работе</option>
+            <option value="done">Выполнено</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <select class="form-select" id="filterProject">
+            <option value="">Все проекты</option>
+            {% for p in projects %}
+                <option value="{{ p.id }}">{{ p.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="mb-3">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTaskModal">
+        Добавить задачу
+    </button>
+</div>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-vcenter card-table">
+            <thead>
+                <tr>
+                    <th>Задача</th>
+                    <th>Проект</th>
+                    <th>Статус</th>
+                    <th>Приоритет</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="taskTable">
+                {% for task in tasks %}
+                <tr id="task-{{ task.id }}"
+                    data-status="{{ task.status }}"
+                    data-project="{{ task.project.id }}">
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.project.name }}</td>
+                    <td>
+                        <select class="form-select form-select-sm"
+                                onchange="updateStatus({{ task.id }}, this.value)">
+                            <option value="todo" {% if task.status == 'todo' %}selected{% endif %}>К выполнению</option>
+                            <option value="in_progress" {% if task.status == 'in_progress' %}selected{% endif %}>В работе</option>
+                            <option value="done" {% if task.status == 'done' %}selected{% endif %}>Выполнено</option>
+                        </select>
+                    </td>
+                    <td>{{ task.get_priority_display }}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger"
+                                onclick="deleteTask({{ task.id }})">Удалить</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" class="text-secondary">Задач пока нет</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal modal-blur fade" id="createTaskModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Новая задача</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" id="newTaskTitle" placeholder="Что нужно сделать?">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Проект</label>
+            <select class="form-select" id="newTaskProject">
+                {% for p in projects %}
+                    <option value="{{ p.id }}">{{ p.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-link link-secondary" data-bs-dismiss="modal">Отмена</button>
+        <button type="button" class="btn btn-primary" onclick="submitCreateTask()">Создать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

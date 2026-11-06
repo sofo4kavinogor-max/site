@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Проекты{% endblock %}
+{% block page_title %}Проекты{% endblock %}
+
+{% block content %}
+<div class="row row-cards">
+    {% for p in projects %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">{{ p.name }}</h3>
+                <p class="text-secondary">{{ p.description|default:"—" }}</p>
+                <div class="d-flex gap-3 mt-3">
+                    <div>
+                        <div class="text-secondary small">Всего</div>
+                        <div class="h3 m-0">{{ p.total }}</div>
+                    </div>
+                    <div>
+                        <div class="text-secondary small">Выполнено</div>
+                        <div class="h3 m-0 text-green">{{ p.done }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-secondary">Проектов пока нет</div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Доска{% endblock %}
+{% block page_title %}Канбан-доска{% endblock %}
+
+{% block content %}
+<div class="row row-cards">
+    {% for status, label, items in columns %}
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">{{ label }} ({{ items.count }})</h3>
+            </div>
+            <div class="card-body" id="col-{{ status }}">
+                {% for task in items %}
+                    {% include 'partials/task_card.html' with task=task %}
+                {% empty %}
+                    <div class="text-secondary small">Пусто</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

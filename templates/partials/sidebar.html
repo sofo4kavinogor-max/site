@@ -1,0 +1,39 @@
+<aside class="navbar navbar-vertical navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar-menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark">
+            <a href="{% url 'tasks:task_list' %}">Менеджер задач</a>
+        </h1>
+        <div class="collapse navbar-collapse" id="sidebar-menu">
+            <ul class="navbar-nav pt-lg-3">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks:task_list' %}">
+                        <span class="nav-link-title">Задачи</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks:board' %}">
+                        <span class="nav-link-title">Доска</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks:projects' %}">
+                        <span class="nav-link-title">Проекты</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks:stats' %}">
+                        <span class="nav-link-title">Статистика</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tasks:control_center' %}">
+                        <span class="nav-link-title">Центр управления</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</aside>
